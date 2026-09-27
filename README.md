@@ -17,8 +17,7 @@ A single self-contained web invitation (`index.html`) — no build step, no depe
 ## Notes
 
 - Everything (HTML, CSS, and JavaScript) lives in the one `index.html` file — nothing else to configure.
-- The RSVP buttons open the guest's email app with a message pre-addressed to
-  `Stephanniejoycecruz@gmail.com`. This depends on the guest's device having a
+- The RSVP buttons open the guest's email app with a message pre-addressed. This depends on the guest's device having a
   default mail app set up.
 - To change any detail (date, venue, names, invitee list, or the RSVP email
   address), open `index.html` in any text editor and search for the relevant
