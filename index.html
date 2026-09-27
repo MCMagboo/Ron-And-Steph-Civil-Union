@@ -21,27 +21,7 @@
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
-  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --paper: #211F1A;
-      --paper-dark: #191713;
-      --ink: #EDE6D6;
-      --sage: #9BAA88;
-      --sage-deep: #C7D2B6;
-      --gold: #D8B778;
-      --blush: #D9AE97;
-    }
-  }
-  :root[data-theme="dark"] {
-    --paper: #211F1A;
-    --paper-dark: #191713;
-    --ink: #EDE6D6;
-    --sage: #9BAA88;
-    --sage-deep: #C7D2B6;
-    --gold: #D8B778;
-    --blush: #D9AE97;
-  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); color-scheme: light; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: var(--paper-dark);
