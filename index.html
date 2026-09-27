@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stephanie &amp; Ron — Civil Union</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF6EE;
+    --paper-dark: #F1EADA;
+    --ink: #2E2B24;
+    --sage: #57614A;
+    --sage-deep: #3B4232;
+    --gold: #B08A4E;
+    --blush: #C99B84;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #211F1A;
+      --paper-dark: #191713;
+      --ink: #EDE6D6;
+      --sage: #9BAA88;
+      --sage-deep: #C7D2B6;
+      --gold: #D8B778;
+      --blush: #D9AE97;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #211F1A;
+    --paper-dark: #191713;
+    --ink: #EDE6D6;
+    --sage: #9BAA88;
+    --sage-deep: #C7D2B6;
+    --gold: #D8B778;
+    --blush: #D9AE97;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper-dark);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  .card {
+    width: 100%;
+    max-width: 620px;
+    background: var(--paper);
+    border: 1px solid rgba(87,97,74,0.25);
+    padding: 64px 40px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .frame {
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(176,138,78,0.45);
+    pointer-events: none;
+  }
+  .sprig {
+    display: block;
+    margin: 0 auto 28px;
+    width: 74px;
+    height: auto;
+    opacity: 0.9;
+  }
+  .eyebrow {
+    text-align: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    color: var(--sage-deep);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .addressee {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 30px;
+  }
+  .sponsors {
+    display: flex;
+    justify-content: center;
+    gap: 44px;
+    margin-bottom: 34px;
+  }
+  .sponsor { text-align: center; }
+  .sponsor-role {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--sage);
+    margin-bottom: 4px;
+  }
+  .sponsor-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+  .lead {
+    text-align: center;
+    max-width: 46ch;
+    margin: 0 auto 34px;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .names {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 2.9rem;
+    line-height: 1.15;
+    color: var(--sage-deep);
+    margin-bottom: 6px;
+  }
+  .amp {
+    display: block;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--blush);
+    margin: 6px 0;
+  }
+  .together {
+    text-align: center;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin: 22px 0 40px;
+  }
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: rgba(176,138,78,0.5);
+    margin: 0 auto 40px;
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    max-width: 380px;
+    margin: 0 auto 38px;
+  }
+  .detail {
+    text-align: center;
+  }
+  .detail .label {
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    color: var(--sage);
+    margin-bottom: 6px;
+  }
+  .detail .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .detail .sub {
+    font-size: 0.88rem;
+    color: var(--sage-deep);
+    margin-top: 2px;
+  }
+  .note {
+    text-align: center;
+    max-width: 46ch;
+    margin: 0 auto;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--ink);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .note b {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--sage-deep);
+  }
+  .signoff {
+    text-align: center;
+    margin-top: 34px;
+    font-size: 0.9rem;
+    color: var(--sage);
+  }
+  @media (max-width: 480px) {
+    .card { padding: 48px 24px 44px; }
+    .names { font-size: 2.3rem; }
+  }
+
+  /* Envelope intro */
+  #envelope-wrap {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper-dark);
+    z-index: 20;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+  #envelope-wrap.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .envelope {
+    width: 260px;
+    height: 180px;
+    position: relative;
+    cursor: pointer;
+  }
+  .env-body {
+    position: absolute;
+    inset: 0;
+    background: var(--paper);
+    border: 1px solid rgba(87,97,74,0.3);
+  }
+  .env-flap {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 90px;
+    background: var(--paper-dark);
+    border: 1px solid rgba(87,97,74,0.3);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    transition: transform 0.7s cubic-bezier(.6,0,.4,1);
+  }
+  .envelope.open .env-flap { transform: rotateX(180deg); }
+  .env-seal {
+    position: absolute;
+    top: 66px; left: 50%;
+    transform: translateX(-50%);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--paper);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
+  .envelope.open .env-seal { opacity: 0; }
+  .env-hint {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    color: var(--sage);
+  }
+
+  /* Action buttons */
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 34px auto 0;
+    max-width: 460px;
+  }
+  .action-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    color: var(--sage-deep);
+    background: transparent;
+    border: 1px solid rgba(87,97,74,0.4);
+    padding: 10px 16px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .action-btn:hover {
+    background: var(--sage-deep);
+    color: var(--paper);
+  }
+
+  /* RSVP */
+  .rsvp {
+    text-align: center;
+    margin-top: 40px;
+  }
+  .rsvp .label {
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    color: var(--sage);
+    margin-bottom: 14px;
+  }
+  .rsvp-btns {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  .rsvp-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.86rem;
+    padding: 10px 20px;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .rsvp-btn.selected {
+    background: var(--gold);
+    color: var(--paper);
+  }
+  .rsvp-msg {
+    margin-top: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--sage-deep);
+    min-height: 1.4em;
+  }
+  .invitee-list {
+    list-style: none;
+    max-width: 380px;
+    margin: 0 auto 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    text-align: center;
+    color: var(--ink);
+  }
+  .rsvp-select {
+    display: block;
+    margin: 0 auto 16px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.88rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid rgba(87,97,74,0.4);
+    padding: 9px 14px;
+    max-width: 280px;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+  <div id="envelope-wrap">
+    <div>
+      <div class="envelope" id="envelope" onclick="openEnvelope()">
+        <div class="env-body"></div>
+        <div class="env-flap"></div>
+        <div class="env-seal">S&amp;R</div>
+      </div>
+      <div class="env-hint">Tap to open your invitation</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="frame"></div>
+    <svg class="sprig" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#57614A" stroke-width="1.4" stroke-linecap="round">
+        <path d="M50 55 C 50 35, 50 20, 50 5" />
+        <path d="M50 45 C 40 40, 30 38, 22 28" />
+        <path d="M50 45 C 60 40, 70 38, 78 28" />
+        <path d="M50 30 C 42 26, 34 24, 28 16" />
+        <path d="M50 30 C 58 26, 66 24, 72 16" />
+      </g>
+      <g fill="#B08A4E" opacity="0.85">
+        <circle cx="50" cy="6" r="3.4"/>
+        <circle cx="22" cy="28" r="2.6"/>
+        <circle cx="78" cy="28" r="2.6"/>
+        <circle cx="28" cy="16" r="2.2"/>
+        <circle cx="72" cy="16" r="2.2"/>
+      </g>
+    </svg>
+
+    <div class="eyebrow">With love and gratitude, we invite our</div>
+    <div class="addressee">Ninong &amp; Ninang</div>
+    <div class="sponsors">
+      <div class="sponsor">
+        <div class="sponsor-role">Ninang</div>
+        <div class="sponsor-name">Ma. Cristina Dario</div>
+      </div>
+      <div class="sponsor">
+        <div class="sponsor-role">Ninong</div>
+        <div class="sponsor-name">Andrew Ariel Belicena</div>
+      </div>
+    </div>
+
+    <p class="lead">
+      As we come before God to begin our life as one, we would be honored to have you
+      standing with us — the two people whose faith and guidance have shaped us long
+      before this day.
+    </p>
+
+    <div class="names">
+      Steph
+      <span class="amp">&amp;</span>
+      Ron
+    </div>
+    <div class="together">REQUEST THE HONOR OF YOUR PRESENCE AT THEIR CIVIL UNION</div>
+
+    <div class="divider"></div>
+
+    <div class="details">
+      <div class="detail">
+        <div class="label">SAVE THE DATE</div>
+        <div class="value">October 8, 2026</div>
+        <div class="sub">Thursday</div>
+      </div>
+      <div class="detail">
+        <div class="label">CEREMONY</div>
+        <div class="value">Office of the Municipal Mayor, Pateros</div>
+        <div class="sub">Arrival 9:30 AM · Ceremony starts 10:00 AM</div>
+      </div>
+      <div class="detail">
+        <div class="label">RECEPTION TO FOLLOW</div>
+        <div class="value">Caza Zaragoza</div>
+        <div class="sub">11:00 AM – 3:00 PM</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="details" style="gap: 20px; margin-bottom: 6px;">
+      <div class="detail">
+        <div class="label">ATTIRE</div>
+        <div class="value" style="font-size:1.2rem;">Casual</div>
+      </div>
+      <div class="detail">
+        <div class="label">ON GIFTS</div>
+        <div class="value" style="font-size:1.2rem;">Baby essentials, with love</div>
+      </div>
+      <div class="detail">
+        <div class="label">A GENTLE NOTE</div>
+        <div class="value" style="font-size:1.2rem;">This invitation is just for you — no plus ones, please</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="note">
+      As our <b>principal sponsors</b>, your presence means more to us than words can
+      hold. Thank you for saying yes to walking this journey with us.
+    </p>
+
+    <div class="signoff">With all our love — Steph &amp; Ron</div>
+
+    <div class="actions">
+      <a class="action-btn" id="cal-btn" href="#" target="_blank" rel="noopener">Add to calendar</a>
+      <a class="action-btn" href="https://www.google.com/maps/search/?api=1&query=Office+of+the+Municipal+Mayor+Pateros" target="_blank" rel="noopener">Directions to ceremony</a>
+      <a class="action-btn" href="https://www.google.com/maps/search/?api=1&query=Caza+Zaragoza+Events+Place" target="_blank" rel="noopener">Directions to reception</a>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="invitees">
+      <div class="label" style="text-align:center; font-size:0.74rem; letter-spacing:0.12em; color:var(--sage); margin-bottom:16px;">WITH LOVE, WE ALSO INVITE</div>
+      <ul class="invitee-list">
+        <li>Jocelyn Cruz</li>
+        <li>Gabriel Cruz Jr</li>
+        <li>Flor Belicena</li>
+        <li>Carmelita Trapane</li>
+        <li>Alex Trapane</li>
+        <li>Rose Tabag</li>
+        <li>Mary Dianne Carigma</li>
+        <li>Arianne Therese Agustin</li>
+        <li>Jonnalyn Cruz</li>
+        <li>Matt Clemence Magboo</li>
+      </ul>
+    </div>
+
+    <div class="rsvp">
+      <div class="label">WILL YOU BE THERE?</div>
+      <select id="rsvp-name" class="rsvp-select">
+        <option value="">Select your name</option>
+        <option>Ma. Cristina Dario (Ninang)</option>
+        <option>Andrew Ariel Belicena (Ninong)</option>
+        <option>Jocelyn Cruz</option>
+        <option>Gabriel Cruz Jr</option>
+        <option>Flor Belicena</option>
+        <option>Carmelita Trapane</option>
+        <option>Alex Trapane</option>
+        <option>Rose Tabag</option>
+        <option>Mary Dianne Carigma</option>
+        <option>Arianne Therese Agustin</option>
+        <option>Jonnalyn Cruz</option>
+        <option>Matt Clemence Magboo</option>
+      </select>
+      <div class="rsvp-btns">
+        <button class="rsvp-btn" id="rsvp-yes" onclick="rsvp('yes')">I'll be there</button>
+        <button class="rsvp-btn" id="rsvp-no" onclick="rsvp('no')">Can't make it</button>
+      </div>
+      <div class="rsvp-msg" id="rsvp-msg"></div>
+    </div>
+  </div>
+
+  <script>
+    function openEnvelope() {
+      var env = document.getElementById('envelope');
+      env.classList.add('open');
+      setTimeout(function () {
+        document.getElementById('envelope-wrap').classList.add('hidden');
+      }, 550);
+    }
+
+    (function setCalendarLink() {
+      try {
+        var params = new URLSearchParams({
+          action: 'TEMPLATE',
+          text: "Steph & Ron's Civil Union",
+          dates: '20261008T093000/20261008T150000',
+          details: 'Ceremony at the Office of the Municipal Mayor, Pateros (arrival 9:30 AM, starts 10:00 AM). Reception to follow at Caza Zaragoza, 11:00 AM - 3:00 PM. Casual attire.',
+          location: 'Office of the Municipal Mayor, Pateros',
+          ctz: 'Asia/Manila'
+        });
+        document.getElementById('cal-btn').href = 'https://calendar.google.com/calendar/render?' + params.toString();
+      } catch (e) { /* leave default href */ }
+    })();
+
+    function rsvp(choice) {
+      var nameSelect = document.getElementById('rsvp-name');
+      var name = nameSelect.value;
+      var yesBtn = document.getElementById('rsvp-yes');
+      var noBtn = document.getElementById('rsvp-no');
+      var msg = document.getElementById('rsvp-msg');
+
+      if (!name) {
+        msg.textContent = 'Please select your name first.';
+        return;
+      }
+
+      yesBtn.classList.toggle('selected', choice === 'yes');
+      noBtn.classList.toggle('selected', choice === 'no');
+
+      var answer = choice === 'yes' ? "will be attending" : "won't be able to make it";
+      var subject = 'RSVP: ' + name;
+      var body = name + ' ' + answer + " Steph & Ron's civil union on October 8, 2026.";
+      var mailtoUrl = 'mailto:Stephanniejoycecruz@gmail.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      msg.textContent = choice === 'yes'
+        ? "Thank you, " + name + " — opening your email app so we get your RSVP!"
+        : "We'll miss you, " + name + " — opening your email app to let us know.";
+
+      window.location.href = mailtoUrl;
+    }
+  </script>
+</body>
+</html>
