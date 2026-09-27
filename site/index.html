@@ -16,6 +16,7 @@
     --sage-deep: #3B4232;
     --gold: #B08A4E;
     --blush: #C99B84;
+    --rose: #D99BA3;
     box-sizing: border-box;
     padding-top: env(safe-area-inset-top, 0px);
     padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -348,6 +349,83 @@
     max-width: 280px;
     width: 100%;
   }
+  .corner {
+    position: absolute;
+    width: 92px;
+    height: 92px;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+  .corner.tl { top: 6px; left: 6px; }
+  .corner.tr { top: 6px; right: 6px; transform: scaleX(-1); }
+  .corner.bl { bottom: 6px; left: 6px; transform: scaleY(-1); }
+  .corner.br { bottom: 6px; right: 6px; transform: scale(-1,-1); }
+
+  .hero {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: 8px auto 20px;
+  }
+  .hero-names {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 2.1rem;
+    color: var(--sage-deep);
+    line-height: 1.05;
+  }
+  .hero-names .amp {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin: 2px 0;
+  }
+  .invite-line {
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--ink);
+    max-width: 30ch;
+    margin: 0 auto 4px;
+    line-height: 1.6;
+  }
+  .event-type {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.9rem;
+    color: var(--gold);
+    margin-bottom: 26px;
+  }
+  .date-box {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 6px;
+  }
+  .date-box .month, .date-box .year {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    color: var(--sage-deep);
+  }
+  .date-box .day-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    color: var(--ink);
+  }
+  .weekday {
+    text-align: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: var(--sage);
+    margin-bottom: 30px;
+  }
 </style>
 </head>
 <body>
@@ -364,24 +442,109 @@
 
   <div class="card">
     <div class="frame"></div>
-    <svg class="sprig" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-      <g fill="none" stroke="#57614A" stroke-width="1.4" stroke-linecap="round">
-        <path d="M50 55 C 50 35, 50 20, 50 5" />
-        <path d="M50 45 C 40 40, 30 38, 22 28" />
-        <path d="M50 45 C 60 40, 70 38, 78 28" />
-        <path d="M50 30 C 42 26, 34 24, 28 16" />
-        <path d="M50 30 C 58 26, 66 24, 72 16" />
-      </g>
-      <g fill="#B08A4E" opacity="0.85">
-        <circle cx="50" cy="6" r="3.4"/>
-        <circle cx="22" cy="28" r="2.6"/>
-        <circle cx="78" cy="28" r="2.6"/>
-        <circle cx="28" cy="16" r="2.2"/>
-        <circle cx="72" cy="16" r="2.2"/>
-      </g>
+
+    <svg width="0" height="0" style="position:absolute">
+      <defs>
+        <g id="blossom">
+          <ellipse cx="0" cy="-7" rx="4.6" ry="7.2" transform="rotate(0)" fill="currentColor"/>
+          <ellipse cx="0" cy="-7" rx="4.6" ry="7.2" transform="rotate(72)" fill="currentColor"/>
+          <ellipse cx="0" cy="-7" rx="4.6" ry="7.2" transform="rotate(144)" fill="currentColor"/>
+          <ellipse cx="0" cy="-7" rx="4.6" ry="7.2" transform="rotate(216)" fill="currentColor"/>
+          <ellipse cx="0" cy="-7" rx="4.6" ry="7.2" transform="rotate(288)" fill="currentColor"/>
+          <circle cx="0" cy="0" r="2.4" fill="#B08A4E"/>
+        </g>
+        <path id="leaf" d="M0 0 C 4.5 -7 4.5 -15 0 -22 C -4.5 -15 -4.5 -7 0 0 Z" fill="currentColor"/>
+      </defs>
     </svg>
 
-    <div class="eyebrow">With love and gratitude, we invite our</div>
+    <svg class="corner tl" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 4 Q 60 4 96 40" fill="none" stroke="#B08A4E" stroke-width="1.2"/>
+      <path d="M4 4 Q 4 60 40 96" fill="none" stroke="#B08A4E" stroke-width="1.2"/>
+      <use href="#leaf" color="#57614A" transform="translate(10,10) rotate(35)"/>
+      <use href="#leaf" color="#6C7A5C" transform="translate(10,10) rotate(75) scale(0.85)"/>
+      <use href="#leaf" color="#57614A" transform="translate(10,10) rotate(-10) scale(0.75)"/>
+      <use href="#blossom" color="#D99BA3" transform="translate(20,44) scale(0.85)"/>
+      <use href="#blossom" color="#E3B4BA" transform="translate(44,20) scale(0.7)"/>
+      <circle cx="10" cy="10" r="3.4" fill="#B08A4E"/>
+    </svg>
+    <svg class="corner tr" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 4 Q 60 4 96 40" fill="none" stroke="#B08A4E" stroke-width="1.2"/>
+      <path d="M4 4 Q 4 60 40 96" fill="none" stroke="#B08A4E" stroke-width="1.2"/>
+      <use href="#leaf" color="#57614A" transform="translate(10,10) rotate(35)"/>
+      <use href="#leaf" color="#6C7A5C" transform="translate(10,10) rotate(75) scale(0.85)"/>
+      <use href="#leaf" color="#57614A" transform="translate(10,10) rotate(-10) scale(0.75)"/>
+      <use href="#blossom" color="#D99BA3" transform="translate(20,44) scale(0.85)"/>
+      <use href="#blossom" color="#E3B4BA" transform="translate(44,20) scale(0.7)"/>
+      <circle cx="10" cy="10" r="3.4" fill="#B08A4E"/>
+    </svg>
+    <svg class="corner bl" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 4 Q 60 4 96 40" fill="none" stroke="#B08A4E" stroke-width="1.2"/>
+      <path d="M4 4 Q 4 60 40 96" fill="none" stroke="#B08A4E" stroke-width="1.2"/>
+      <use href="#leaf" color="#57614A" transform="translate(10,10) rotate(35)"/>
+      <use href="#leaf" color="#6C7A5C" transform="translate(10,10) rotate(75) scale(0.85)"/>
+      <use href="#leaf" color="#57614A" transform="translate(10,10) rotate(-10) scale(0.75)"/>
+      <use href="#blossom" color="#D99BA3" transform="translate(20,44) scale(0.85)"/>
+      <use href="#blossom" color="#E3B4BA" transform="translate(44,20) scale(0.7)"/>
+      <circle cx="10" cy="10" r="3.4" fill="#B08A4E"/>
+    </svg>
+    <svg class="corner br" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 4 Q 60 4 96 40" fill="none" stroke="#B08A4E" stroke-width="1.2"/>
+      <path d="M4 4 Q 4 60 40 96" fill="none" stroke="#B08A4E" stroke-width="1.2"/>
+      <use href="#leaf" color="#57614A" transform="translate(10,10) rotate(35)"/>
+      <use href="#leaf" color="#6C7A5C" transform="translate(10,10) rotate(75) scale(0.85)"/>
+      <use href="#leaf" color="#57614A" transform="translate(10,10) rotate(-10) scale(0.75)"/>
+      <use href="#blossom" color="#D99BA3" transform="translate(20,44) scale(0.85)"/>
+      <use href="#blossom" color="#E3B4BA" transform="translate(44,20) scale(0.7)"/>
+      <circle cx="10" cy="10" r="3.4" fill="#B08A4E"/>
+    </svg>
+
+    <div class="hero">
+      <svg viewBox="0 0 260 260" width="260" height="260" style="position:absolute; inset:0;">
+        <polygon points="130,18 224,72 224,180 130,234 36,180 36,72"
+          fill="none" stroke="#B08A4E" stroke-width="1.5"/>
+
+        <!-- upper-right cluster -->
+        <use href="#leaf" color="#57614A" transform="translate(176,45) rotate(-40)"/>
+        <use href="#leaf" color="#6C7A5C" transform="translate(176,45) rotate(10) scale(0.8)"/>
+        <use href="#leaf" color="#57614A" transform="translate(176,45) rotate(60) scale(0.7)"/>
+        <use href="#blossom" color="#D99BA3" transform="translate(190,58) scale(1)"/>
+        <use href="#blossom" color="#E3B4BA" transform="translate(160,32) scale(0.75)"/>
+        <use href="#blossom" color="#D99BA3" transform="translate(205,80) scale(0.6)"/>
+
+        <!-- lower-left cluster -->
+        <use href="#leaf" color="#57614A" transform="translate(84,207) rotate(140)"/>
+        <use href="#leaf" color="#6C7A5C" transform="translate(84,207) rotate(190) scale(0.8)"/>
+        <use href="#leaf" color="#57614A" transform="translate(84,207) rotate(240) scale(0.7)"/>
+        <use href="#blossom" color="#D99BA3" transform="translate(70,194) scale(1)"/>
+        <use href="#blossom" color="#E3B4BA" transform="translate(100,220) scale(0.75)"/>
+        <use href="#blossom" color="#D99BA3" transform="translate(55,172) scale(0.6)"/>
+
+        <!-- small balancing sprigs -->
+        <use href="#leaf" color="#6C7A5C" transform="translate(36,72) rotate(20) scale(0.65)"/>
+        <use href="#blossom" color="#E3B4BA" transform="translate(36,72) scale(0.45)"/>
+        <use href="#leaf" color="#6C7A5C" transform="translate(224,180) rotate(200) scale(0.65)"/>
+        <use href="#blossom" color="#E3B4BA" transform="translate(224,180) scale(0.45)"/>
+      </svg>
+      <div class="hero-names">
+        Ron
+        <span class="amp">&amp;</span>
+        Steph
+      </div>
+    </div>
+
+    <div class="invite-line">Invite you to join in the celebration of their</div>
+    <div class="event-type">Civil Wedding</div>
+
+    <div class="date-box">
+      <span class="month">OCTOBER</span>
+      <span class="day-num">08</span>
+      <span class="year">2026</span>
+    </div>
+    <div class="weekday">THURSDAY</div>
+
+    <div class="divider"></div>
+
+    <div class="eyebrow">With love and gratitude, we especially invite our</div>
     <div class="addressee">Ninong &amp; Ninang</div>
     <div class="sponsors">
       <div class="sponsor">
@@ -400,13 +563,6 @@
       before this day.
     </p>
 
-    <div class="names">
-      Steph
-      <span class="amp">&amp;</span>
-      Ron
-    </div>
-    <div class="together">REQUEST THE HONOR OF YOUR PRESENCE AT THEIR CIVIL UNION</div>
-
     <div class="divider"></div>
 
     <div class="details">
@@ -423,7 +579,7 @@
       <div class="detail">
         <div class="label">RECEPTION TO FOLLOW</div>
         <div class="value">Caza Zaragoza</div>
-        <div class="sub">11:00 AM – 3:00 PM</div>
+        <div class="sub">Aliw · 11:00 AM – 3:00 PM</div>
       </div>
     </div>
 
@@ -517,7 +673,7 @@
           action: 'TEMPLATE',
           text: "Steph & Ron's Civil Union",
           dates: '20261008T093000/20261008T150000',
-          details: 'Ceremony at the Office of the Municipal Mayor, Pateros (arrival 9:30 AM, starts 10:00 AM). Reception to follow at Caza Zaragoza, 11:00 AM - 3:00 PM. Casual attire.',
+          details: 'Ceremony at the Office of the Municipal Mayor, Pateros (arrival 9:30 AM, starts 10:00 AM). Reception to follow at Caza Zaragoza, Aliw, 11:00 AM - 3:00 PM. Casual attire.',
           location: 'Office of the Municipal Mayor, Pateros',
           ctz: 'Asia/Manila'
         });
